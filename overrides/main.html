@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if page.is_homepage %}
+    <div class="hero-custom">
+      <span class="eyebrow">BASE DE CONHECIMENTO PESSOAL</span>
+      <h1>Registro técnico de sistemas e desenvolvimento.</h1>
+      <p>Notas de estudo em Banco de Dados, SQL, PowerShell, PL/SQL, APIs, C#, Redes, Firewall, Linux e Python — publicadas conforme cada tópico é consolidado.</p>
+    </div>
+  {% endif %}
+  {{ super() }}
+{% endblock %}
