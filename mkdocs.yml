@@ -1,8 +1,45 @@
 site_name: Laboratório de Estudos
 site_description: Um laboratório de referências sobre sistemas, backend e infraestrutura — escrito em Markdown, mantido com rigor.
+site_url: https://isaque-dias.github.io/portal-estudos/
+
+nav:
+  - Início: index.md
+  - Sobre: sobre.md
+  - SQL:
+    - Visão geral: sql/index.md
+    - Fundamentos absolutos:
+      - SGBD, tabelas e tipos de dado: sql/fundamentos-absolutos/01-sgbd-tabelas-colunas-tipos.md
+      - "SELECT, WHERE, ORDER BY, LIMIT": sql/fundamentos-absolutos/02-select-where-orderby-limit.md
+      - Operadores lógicos e de comparação: sql/fundamentos-absolutos/03-operadores-logicos-comparacao.md
+      - "Exercício: 20 consultas": sql/fundamentos-absolutos/04-exercicio-20-consultas.md
+      - Critério de conclusão: sql/fundamentos-absolutos/05-criterio-conclusao.md
+    - Agregações e junções:
+      - "GROUP BY, HAVING e agregação": sql/agregacoes-juncoes/01-group-by-having-agregacao.md
+      - JOINs: sql/agregacoes-juncoes/02-joins.md
+      - Subqueries: sql/agregacoes-juncoes/03-subqueries.md
+      - "Exercício: relatório com 3 tabelas": sql/agregacoes-juncoes/04-exercicio-relatorio-3-tabelas.md
+      - Critério de conclusão: sql/agregacoes-juncoes/05-criterio-conclusao.md
+      
+  - PowerShell:
+    - Visão geral: powershell/index.md
+    - Fundamentos de Windows:
+      - NTFS e permissões: powershell/fundamentos-windows/01-ntfs-permissoes.md
+      - "Serviços e Gerenciador de Tarefas": powershell/fundamentos-windows/02-servicos-gerenciador-tarefas.md
+      - "Usuários, grupos e Active Directory": powershell/fundamentos-windows/03-usuarios-grupos-active-directory.md
+      - Rede básica no Windows: powershell/fundamentos-windows/04-rede-basica-windows.md
+      - Critério de conclusão: powershell/fundamentos-windows/05-criterio-conclusao.md
+    - PowerShell:
+      - O que é o PowerShell: powershell/powershell-core/01-o-que-e-powershell.md
+      - "Variáveis, tipos e operadores": powershell/powershell-core/02-variaveis-tipos-operadores.md
+      - "Condicionais e loops": powershell/powershell-core/03-condicionais-loops.md
+      - "Arrays e Hash Tables": powershell/powershell-core/04-arrays-hashtables.md
+      - "Cmdlets e convenção Verbo-Substantivo": powershell/powershell-core/05-cmdlets-verbo-substantivo.md
+      - "Exercício: script com array de servidores": powershell/powershell-core/06-exercicio-script-servidores.md
+      - Critério de conclusão: powershell/powershell-core/07-criterio-conclusao.md
 
 theme:
   name: material
+  language: pt-BR
   custom_dir: overrides
   palette:
     - scheme: slate
@@ -23,6 +60,8 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
+    - navigation.indexes
+    - navigation.expand
     - navigation.top
     - navigation.footer
     - search.suggest
