@@ -1,0 +1,2142 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Um laboratório de referências sobre sistemas, backend e infraestrutura — escrito em Markdown, mantido com rigor.">
+      
+      
+      
+        <link rel="canonical" href="https://isaque-dias.github.io/portal-estudos/powershell/fundamentos-windows/01-ntfs-permissoes/">
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../02-servicos-gerenciador-tarefas/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>NTFS e permissões - Laboratório de Estudos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sistema-de-arquivos-e-permissoes-ntfs" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../.." title="Laboratório de Estudos" class="md-header__button md-logo" aria-label="Laboratório de Estudos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laboratório de Estudos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NTFS e permissões
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../sobre/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Sobre
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../sql/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SQL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  PowerShell
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Laboratório de Estudos" class="md-nav__button md-logo" aria-label="Laboratório de Estudos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Laboratório de Estudos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sobre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../sql/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SQL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql/resumo-rapido/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resumo rápido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentos absolutos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fundamentos absolutos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql/fundamentos-absolutos/01-sgbd-tabelas-colunas-tipos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SGBD, tabelas e tipos de dado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql/fundamentos-absolutos/02-select-where-orderby-limit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SELECT, WHERE, ORDER BY, LIMIT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql/fundamentos-absolutos/03-operadores-logicos-comparacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operadores lógicos e de comparação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql/fundamentos-absolutos/04-exercicio-20-consultas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercício: 20 consultas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql/fundamentos-absolutos/05-criterio-conclusao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Critério de conclusão
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agregações e junções
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agregações e junções
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql/agregacoes-juncoes/01-group-by-having-agregacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GROUP BY, HAVING e agregação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql/agregacoes-juncoes/02-joins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JOINs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql/agregacoes-juncoes/03-subqueries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subqueries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql/agregacoes-juncoes/04-exercicio-relatorio-3-tabelas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercício: relatório com 3 tabelas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql/agregacoes-juncoes/05-criterio-conclusao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Critério de conclusão
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PowerShell
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentos de Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fundamentos de Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NTFS e permissões
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NTFS e permissões
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-o-que-e-um-sistema-de-arquivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. O Que É um Sistema de Arquivos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. O Que É um Sistema de Arquivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-o-problema-que-um-sistema-de-arquivos-resolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 O problema que um sistema de arquivos resolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-o-que-um-sistema-de-arquivos-precisa-controlar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 O que um sistema de arquivos precisa controlar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-por-que-existem-varios-sistemas-de-arquivos-diferentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Por que existem vários sistemas de arquivos diferentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-o-que-acontece-na-pratica-quando-um-arquivo-e-salvo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 O que acontece, na prática, quando um arquivo é salvo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sistema-de-arquivos-e-permissoes-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sistema de Arquivos e Permissões NTFS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Sistema de Arquivos e Permissões NTFS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-o-que-e-o-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 O que é o NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-o-modelo-de-permissoes-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 O modelo de permissões NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-heranca-de-permissoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Herança de permissões
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-regra-de-precedencia-deny-sempre-vence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Regra de precedência: Deny sempre vence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-verificando-permissoes-pela-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Verificando permissões pela GUI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-permissoes-de-compartilhamento-vs-permissoes-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Permissões de compartilhamento vs permissões NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo-mental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo mental
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-servicos-gerenciador-tarefas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serviços e Gerenciador de Tarefas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-usuarios-grupos-active-directory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usuários, grupos e Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-rede-basica-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rede básica no Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-criterio-conclusao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Critério de conclusão
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PowerShell
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell-core/01-o-que-e-powershell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    O que é o PowerShell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell-core/02-variaveis-tipos-operadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variáveis, tipos e operadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell-core/03-condicionais-loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Condicionais e loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell-core/04-arrays-hashtables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arrays e Hash Tables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell-core/05-cmdlets-verbo-substantivo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cmdlets e convenção Verbo-Substantivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell-core/06-exercicio-script-servidores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercício: script com array de servidores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../powershell-core/07-criterio-conclusao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Critério de conclusão
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-o-que-e-um-sistema-de-arquivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. O Que É um Sistema de Arquivos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. O Que É um Sistema de Arquivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-o-problema-que-um-sistema-de-arquivos-resolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 O problema que um sistema de arquivos resolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-o-que-um-sistema-de-arquivos-precisa-controlar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 O que um sistema de arquivos precisa controlar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-por-que-existem-varios-sistemas-de-arquivos-diferentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Por que existem vários sistemas de arquivos diferentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-o-que-acontece-na-pratica-quando-um-arquivo-e-salvo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 O que acontece, na prática, quando um arquivo é salvo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sistema-de-arquivos-e-permissoes-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sistema de Arquivos e Permissões NTFS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Sistema de Arquivos e Permissões NTFS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-o-que-e-o-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 O que é o NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-o-modelo-de-permissoes-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 O modelo de permissões NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-heranca-de-permissoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Herança de permissões
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-regra-de-precedencia-deny-sempre-vence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Regra de precedência: Deny sempre vence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-verificando-permissoes-pela-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Verificando permissões pela GUI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-permissoes-de-compartilhamento-vs-permissoes-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Permissões de compartilhamento vs permissões NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo-mental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo mental
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+  
+                  
+
+
+
+<h1 id="sistema-de-arquivos-e-permissoes-ntfs">Sistema de Arquivos e Permissões NTFS<a class="headerlink" href="#sistema-de-arquivos-e-permissoes-ntfs" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Parte 1 de 5 — Módulo "Fundamentos de Windows para PowerShell". Cobre o conceito geral de sistema de arquivos, o sistema de arquivos NTFS e seu modelo de permissões.</p>
+</blockquote>
+<hr />
+<h2 id="1-o-que-e-um-sistema-de-arquivos">1. O Que É um Sistema de Arquivos<a class="headerlink" href="#1-o-que-e-um-sistema-de-arquivos" title="Permanent link">&para;</a></h2>
+<h3 id="11-o-problema-que-um-sistema-de-arquivos-resolve">1.1 O problema que um sistema de arquivos resolve<a class="headerlink" href="#11-o-problema-que-um-sistema-de-arquivos-resolve" title="Permanent link">&para;</a></h3>
+<p>Um disco (HDD ou SSD), fisicamente, é só uma grande sequência de espaços onde é possível gravar dados binários — não existe, no hardware em si, o conceito de "pasta" ou "arquivo chamado foto.jpg". Se cada programa gravasse dados diretamente nesse espaço bruto, do seu próprio jeito, seria impossível para outro programa (ou para o próprio usuário) saber onde um arquivo começa, onde termina, qual é o nome dele, ou sequer que ele existe.</p>
+<p>Um <strong>sistema de arquivos (filesystem)</strong> é a camada de software, geralmente parte do sistema operacional, que resolve esse problema: ele define <strong>como os dados são organizados, nomeados, localizados e recuperados</strong> dentro do espaço bruto de um disco. É a "linguagem comum" que transforma uma sequência de bits em algo que faz sentido para humanos e programas — pastas, arquivos, nomes, tamanhos, datas.</p>
+<h3 id="12-o-que-um-sistema-de-arquivos-precisa-controlar">1.2 O que um sistema de arquivos precisa controlar<a class="headerlink" href="#12-o-que-um-sistema-de-arquivos-precisa-controlar" title="Permanent link">&para;</a></h3>
+<p>Independentemente do sistema operacional ou da implementação específica, todo sistema de arquivos precisa resolver os mesmos problemas básicos:</p>
+<table>
+<thead>
+<tr>
+<th>Responsabilidade</th>
+<th>O que envolve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estrutura de nomes</td>
+<td>Permitir organizar dados em pastas/diretórios, com nomes legíveis para humanos</td>
+</tr>
+<tr>
+<td>Alocação de espaço</td>
+<td>Decidir em quais blocos físicos do disco cada arquivo é gravado, e controlar quais blocos estão livres ou ocupados</td>
+</tr>
+<tr>
+<td>Metadados</td>
+<td>Guardar informações sobre cada arquivo: tamanho, datas de criação/modificação, dono, permissões</td>
+</tr>
+<tr>
+<td>Localização</td>
+<td>Permitir encontrar rapidamente onde um arquivo específico está gravado, sem precisar varrer o disco inteiro</td>
+</tr>
+<tr>
+<td>Integridade</td>
+<td>Manter a consistência dos dados mesmo diante de falhas, como quedas de energia durante uma gravação</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-por-que-existem-varios-sistemas-de-arquivos-diferentes">1.3 Por que existem vários sistemas de arquivos diferentes<a class="headerlink" href="#13-por-que-existem-varios-sistemas-de-arquivos-diferentes" title="Permanent link">&para;</a></h3>
+<p>Assim como existem várias distros Linux ou vários shells, existem vários sistemas de arquivos, porque cada um faz escolhas de design diferentes — mais desempenho, mais segurança, compatibilidade com sistemas antigos, suporte a discos muito grandes, etc. Alguns exemplos, para dar noção de que esse é um conceito mais amplo do que "o sistema de arquivos do Windows":</p>
+<table>
+<thead>
+<tr>
+<th>Sistema de arquivos</th>
+<th>Usado principalmente em</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NTFS</td>
+<td>Windows (padrão desde o Windows NT)</td>
+</tr>
+<tr>
+<td>FAT32 / exFAT</td>
+<td>Pendrives, cartões de memória, compatibilidade entre sistemas</td>
+</tr>
+<tr>
+<td>ext4, Btrfs, XFS</td>
+<td>Linux</td>
+</tr>
+<tr>
+<td>APFS</td>
+<td>macOS</td>
+</tr>
+</tbody>
+</table>
+<p>Ou seja: <strong>"sistema de arquivos" é o conceito geral</strong> (a categoria); <strong>NTFS é uma implementação específica</strong> desse conceito, criada e mantida pela Microsoft para o Windows — da mesma forma que "linguagem de programação" é o conceito geral e "Python" é uma implementação específica dele.</p>
+<h3 id="14-o-que-acontece-na-pratica-quando-um-arquivo-e-salvo">1.4 O que acontece, na prática, quando um arquivo é salvo<a class="headerlink" href="#14-o-que-acontece-na-pratica-quando-um-arquivo-e-salvo" title="Permanent link">&para;</a></h3>
+<p>Para tornar o conceito mais concreto, um resumo simplificado do que o sistema de arquivos faz nos bastidores ao salvar um arquivo novo:</p>
+<ol>
+<li>Localiza blocos livres no disco, com espaço suficiente para o conteúdo.</li>
+<li>Grava o conteúdo real do arquivo nesses blocos.</li>
+<li>Cria um registro de <strong>metadados</strong> (nome, tamanho, data, localização dos blocos usados) em uma estrutura de controle própria do sistema de arquivos.</li>
+<li>Atualiza a estrutura de diretórios, para que aquele nome de arquivo apareça na pasta correspondente.</li>
+</ol>
+<p>Isso explica, por exemplo, por que apagar um arquivo costuma ser muito mais rápido do que copiá-lo: apagar, na maioria dos sistemas de arquivos, só remove o registro de metadados e marca os blocos como livres novamente — sem necessariamente sobrescrever o conteúdo antigo de imediato (o que também é parte do motivo pelo qual, tecnicamente, é possível recuperar arquivos "apagados" recentemente com ferramentas especializadas).</p>
+<hr />
+<h2 id="2-sistema-de-arquivos-e-permissoes-ntfs">2. Sistema de Arquivos e Permissões NTFS<a class="headerlink" href="#2-sistema-de-arquivos-e-permissoes-ntfs" title="Permanent link">&para;</a></h2>
+<h3 id="21-o-que-e-o-ntfs">2.1 O que é o NTFS<a class="headerlink" href="#21-o-que-e-o-ntfs" title="Permanent link">&para;</a></h3>
+<p><strong>NTFS (New Technology File System)</strong> é o sistema de arquivos padrão do Windows desde o Windows NT, usado hoje em praticamente toda instalação moderna (o antigo FAT32 sobrevive principalmente em pendrives e cartões de memória, por compatibilidade). Assim como o ext4 organiza dados no Linux, o NTFS define como arquivos e pastas são armazenados, indexados e protegidos no disco.</p>
+<p>Diferente do Linux, onde tudo existe sob uma única raiz (<code>/</code>), o Windows organiza o sistema de arquivos em <strong>unidades</strong> separadas por letra (<code>C:</code>, <code>D:</code>), cada uma podendo ter seu próprio sistema de arquivos.</p>
+<h3 id="22-o-modelo-de-permissoes-ntfs">2.2 O modelo de permissões NTFS<a class="headerlink" href="#22-o-modelo-de-permissoes-ntfs" title="Permanent link">&para;</a></h3>
+<p>O NTFS usa um modelo bem diferente do <code>rwx</code> do Linux: em vez de três categorias fixas (dono/grupo/outros), o NTFS usa <strong>ACLs (Access Control Lists)</strong> — listas onde é possível conceder permissões específicas para qualquer combinação de usuários e grupos, individualmente.</p>
+<p>Permissões básicas mais comuns no NTFS:</p>
+<table>
+<thead>
+<tr>
+<th>Permissão</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leitura (Read)</td>
+<td>Ver o conteúdo do arquivo/pasta</td>
+</tr>
+<tr>
+<td>Gravação (Write)</td>
+<td>Modificar o conteúdo</td>
+</tr>
+<tr>
+<td>Leitura e Execução (Read &amp; Execute)</td>
+<td>Ler e executar arquivos de programa</td>
+</tr>
+<tr>
+<td>Modificar (Modify)</td>
+<td>Ler, gravar e apagar</td>
+</tr>
+<tr>
+<td>Controle Total (Full Control)</td>
+<td>Todas as permissões, incluindo alterar permissões de outros usuários</td>
+</tr>
+</tbody>
+</table>
+<p>Cada uma dessas permissões pode ser concedida (Allow) ou explicitamente negada (Deny) para qualquer usuário ou grupo específico — o que dá bem mais granularidade do que o modelo de três categorias do Linux, mas também torna mais fácil configurações inconsistentes se não houver organização.</p>
+<h3 id="23-heranca-de-permissoes">2.3 Herança de permissões<a class="headerlink" href="#23-heranca-de-permissoes" title="Permanent link">&para;</a></h3>
+<p>Por padrão, uma pasta nova <strong>herda</strong> as permissões da pasta pai. Isso significa que, ao criar uma subpasta, ela normalmente já nasce com as mesmas permissões da pasta onde foi criada, a menos que a herança seja explicitamente quebrada.</p>
+<h3 id="24-regra-de-precedencia-deny-sempre-vence">2.4 Regra de precedência: Deny sempre vence<a class="headerlink" href="#24-regra-de-precedencia-deny-sempre-vence" title="Permanent link">&para;</a></h3>
+<p>Quando um usuário pertence a múltiplos grupos com permissões conflitantes sobre o mesmo recurso, a regra do NTFS é: <strong>uma negação explícita (Deny) sempre tem prioridade sobre qualquer permissão concedida (Allow)</strong>, não importa de qual grupo ela venha. Isso é diferente do comportamento intuitivo de "soma de permissões" — um único Deny em qualquer grupo do usuário bloqueia o acesso, mesmo que outros grupos concedam Allow.</p>
+<h3 id="25-verificando-permissoes-pela-gui">2.5 Verificando permissões pela GUI<a class="headerlink" href="#25-verificando-permissoes-pela-gui" title="Permanent link">&para;</a></h3>
+<p>No Explorador de Arquivos: botão direito no arquivo/pasta → <strong>Propriedades</strong> → aba <strong>Segurança</strong>. Ali aparece a lista de usuários/grupos com permissões configuradas, e é possível editar através do botão <strong>Editar</strong> ou acessar configurações mais avançadas em <strong>Avançado</strong>.</p>
+<h3 id="26-permissoes-de-compartilhamento-vs-permissoes-ntfs">2.6 Permissões de compartilhamento vs permissões NTFS<a class="headerlink" href="#26-permissoes-de-compartilhamento-vs-permissoes-ntfs" title="Permanent link">&para;</a></h3>
+<p>Um ponto que gera confusão: quando uma pasta é <strong>compartilhada na rede</strong>, existem <strong>dois níveis de permissão diferentes</strong> sendo aplicados ao mesmo tempo:</p>
+<ul>
+<li><strong>Permissões de compartilhamento (Share)</strong>: controlam o acesso via rede especificamente.</li>
+<li><strong>Permissões NTFS</strong>: controlam o acesso ao arquivo no disco, independente de como ele foi acessado (localmente ou pela rede).</li>
+</ul>
+<p>Quando os dois níveis existem, <strong>a permissão mais restritiva prevalece</strong>. Por exemplo, se o compartilhamento permite Controle Total, mas o NTFS permite apenas Leitura, o resultado final de acesso pela rede é Leitura.</p>
+<hr />
+<h2 id="resumo-mental">Resumo mental<a class="headerlink" href="#resumo-mental" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>Sistema de arquivos -&gt; camada de software que organiza dados em um disco bruto (nomes, pastas, metadados, localização)
+NTFS -&gt; uma implementação específica de sistema de arquivos, padrão do Windows; permissões via ACL (não rwx)
+Herança -&gt; subpasta nova herda permissões da pasta pai, por padrão
+Deny sempre vence -&gt; uma negação em qualquer grupo bloqueia o acesso, mesmo com Allow em outro grupo
+Compartilhamento + NTFS -&gt; a permissão mais restritiva entre os dois níveis prevalece
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Visão geral">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Visão geral
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02-servicos-gerenciador-tarefas/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Serviços e Gerenciador de Tarefas">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Serviços e Gerenciador de Tarefas
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.expand", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
