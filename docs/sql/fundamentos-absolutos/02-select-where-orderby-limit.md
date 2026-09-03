@@ -58,6 +58,7 @@ SELECT nome FROM clientes ORDER BY nome DESC LIMIT 3;    -- os 3 últimos em ord
 
 **Nota sobre portabilidade**: `LIMIT` é o padrão em PostgreSQL, MySQL e SQLite. O SQL Server usa uma sintaxe diferente (`TOP`), e o Oracle tradicionalmente usa `ROWNUM` ou `FETCH FIRST` — vale ter em mente ao migrar consultas entre diferentes SGBDs.
 
+
 ### 2.5 Ordem de leitura recomendada de uma consulta
 
 Embora a ordem em que as cláusulas são **escritas** seja sempre `SELECT` → `FROM` → `WHERE` → `ORDER BY` → `LIMIT`, o banco de dados internamente processa essa consulta em uma ordem lógica diferente: primeiro filtra as linhas (`WHERE`), depois seleciona as colunas (`SELECT`), depois ordena (`ORDER BY`), e por fim aplica o limite (`LIMIT`). Entender essa ordem lógica ajuda a raciocinar sobre consultas mais complexas mais adiante.

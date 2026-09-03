@@ -55,14 +55,22 @@ theme:
       toggle:
         icon: material/weather-night
         name: Mudar para modo escuro
+  icon:
+    logo: material/book-open-variant  
+  favicon: assets/favicon.png
+
   font:
     text: Inter
     code: JetBrains Mono
   features:
+    - header.autohide
     - navigation.tabs
     - navigation.sections
     - navigation.indexes
     - navigation.expand
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
     - navigation.top
     - navigation.footer
     - search.suggest
@@ -73,11 +81,33 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/traduzir-tempo-leitura.js
+
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight
   - tables
+  - pymdownx.tabbed:
+      alternate_style: true
   - toc:
       permalink: true
+  - abbr
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+      
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: date
+      locale: pt
+  - timetoread:
+      wpm: 200

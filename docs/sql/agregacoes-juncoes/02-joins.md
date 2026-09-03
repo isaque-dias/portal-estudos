@@ -1,3 +1,7 @@
+---
+description: Diferença entre INNER JOIN e LEFT JOIN, com exemplos práticos e quando usar cada um.
+---
+
 # JOINs: INNER, LEFT, RIGHT, FULL, CROSS
 
 > Parte 2 de 5 — Módulo 1.2 "Agregações e junções" (SQL). Cobre os cinco tipos de JOIN, com exemplo consistente, e quando cada um se aplica.
@@ -13,6 +17,22 @@ No modelo relacional, dados relacionados costumam ficar em tabelas separadas, pa
 O `JOIN` é o mecanismo que **junta linhas de duas (ou mais) tabelas**, combinando-as com base em uma condição de relacionamento — geralmente comparando uma chave em uma tabela com a mesma chave em outra.
 
 ### 2.2 Tabelas de exemplo usadas nesta seção
+
+
+
+```mermaid
+erDiagram
+    CLIENTES ||--o{ PEDIDOS : possui
+    CLIENTES {
+        int id PK
+        string nome
+    }
+    PEDIDOS {
+        int id PK
+        int cliente_id FK
+        int valor
+    }
+```
 
 ```
 clientes                       pedidos
