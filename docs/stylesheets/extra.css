@@ -112,3 +112,12 @@
   transform: translateY(-2px);
   border-color: var(--md-accent-fg-color);
 }
+
+.md-typeset pre > code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.md-grid {
+  max-width: 1440px;
+}
