@@ -8,7 +8,7 @@ nav:
   - SQL:
     - Visão geral: sql/index.md
     - Resumo rápido: sql/resumo-rapido.md
-    - Instalação, PostgreSQL + pgAdmin: sql/instalacao-postgresql-pgadmin.md
+    - "Instalação: PostgreSQL + pgAdmin": sql/instalacao-postgresql-pgadmin.md
     - Fundamentos absolutos:
       - SGBD, tabelas e tipos de dado: sql/fundamentos-absolutos/01-sgbd-tabelas-colunas-tipos.md
       - "SELECT, WHERE, ORDER BY, LIMIT": sql/fundamentos-absolutos/02-select-where-orderby-limit.md
