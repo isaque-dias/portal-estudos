@@ -2,114 +2,118 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sobre/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/includes/abbreviations/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
+    </url>
+    <url>
+         <loc>https://isaque-dias.github.io/portal-estudos/powershell/resumo-rapido/</loc>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/fundamentos-windows/01-ntfs-permissoes/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/fundamentos-windows/02-servicos-gerenciador-tarefas/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/fundamentos-windows/03-usuarios-grupos-active-directory/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/fundamentos-windows/04-rede-basica-windows/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/fundamentos-windows/05-criterio-conclusao/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/powershell-core/01-o-que-e-powershell/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/powershell-core/02-variaveis-tipos-operadores/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/powershell-core/03-condicionais-loops/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/powershell-core/04-arrays-hashtables/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/powershell-core/05-cmdlets-verbo-substantivo/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/powershell-core/06-exercicio-script-servidores/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/powershell/powershell-core/07-criterio-conclusao/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/resumo-rapido/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/agregacoes-juncoes/01-group-by-having-agregacao/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/agregacoes-juncoes/02-joins/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/agregacoes-juncoes/03-subqueries/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/agregacoes-juncoes/04-exercicio-relatorio-3-tabelas/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/agregacoes-juncoes/05-criterio-conclusao/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/fundamentos-absolutos/01-sgbd-tabelas-colunas-tipos/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/fundamentos-absolutos/02-select-where-orderby-limit/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/fundamentos-absolutos/03-operadores-logicos-comparacao/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/fundamentos-absolutos/04-exercicio-20-consultas/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
     <url>
          <loc>https://isaque-dias.github.io/portal-estudos/sql/fundamentos-absolutos/05-criterio-conclusao/</loc>
-         <lastmod>2026-09-03</lastmod>
+         <lastmod>2026-09-05</lastmod>
     </url>
 </urlset>

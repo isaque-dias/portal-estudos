@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Diferença entre INNER JOIN e LEFT JOIN, com exemplos práticos e quando usar cada um.">
+        <meta name="description" content="Um laboratório de referências sobre sistemas, backend e infraestrutura — escrito em Markdown, mantido com rigor.">
       
       
       
@@ -982,17 +982,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#resumo-mental" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resumo mental
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1118,6 +1107,8 @@
       
         
       
+        
+      
     
     
     
@@ -1180,6 +1171,34 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../powershell/resumo-rapido/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resumo rápido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -1208,10 +1227,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
             
   
   
@@ -1229,8 +1248,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1426,10 +1445,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
         
           
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
             
   
   
@@ -1447,8 +1466,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1811,17 +1830,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#resumo-mental" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resumo mental
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2002,12 +2010,14 @@
                      B quando existir)   A quando existir)  dois lados)
 </code></pre></div>
 <hr />
-<h2 id="resumo-mental">Resumo mental<a class="headerlink" href="#resumo-mental" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>INNER JOIN -&gt; só o que existe nos dois lados
-LEFT JOIN  -&gt; tudo da tabela esquerda, com ou sem correspondência (NULL quando falta)
-RIGHT JOIN -&gt; tudo da tabela direita (raramente usado, equivale a inverter e usar LEFT)
-FULL JOIN  -&gt; tudo dos dois lados
-CROSS JOIN -&gt; todas as combinações possíveis (produto cartesiano, sem condição)
+<div class="admonition resumo">
+<p class="admonition-title">Resumo Mental</p>
+</div>
+<div class="highlight"><pre><span></span><code>    INNER JOIN -&gt; só o que existe nos dois lados
+    LEFT JOIN  -&gt; tudo da tabela esquerda, com ou sem correspondência (NULL quando falta)
+    RIGHT JOIN -&gt; tudo da tabela direita (raramente usado, equivale a inverter e usar LEFT)
+    FULL JOIN  -&gt; tudo dos dois lados
+    CROSS JOIN -&gt; todas as combinações possíveis (produto cartesiano, sem condição)
 </code></pre></div>
 
 
@@ -2029,7 +2039,7 @@ CROSS JOIN -&gt; todas as combinações possíveis (produto cartesiano, sem cond
     <span class="md-icon" title="Última atualização">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 de setembro de 2026 23:33:10 UTC">3 de setembro de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="5 de setembro de 2026 01:37:23 UTC">5 de setembro de 2026</span>
   </span>
 
     
