@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Serviços do Windows e Gerenciador de Tarefas
 
 > Parte 2 de 5 — Módulo "Fundamentos de Windows para PowerShell". Cobre o que é um serviço, como gerenciá-lo pela GUI e pelo terminal, e o Gerenciador de Tarefas.
@@ -64,12 +68,12 @@ Stop-Process -Name "nome_do_processo"    # encerra o processo
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo mental"
 
 ```
-Serviço -> programa em segundo plano (equivalente a daemon/unit do Linux)
-services.msc -> gerencia serviços pela GUI; tipo de inicialização define se sobe sozinho no boot
-Get-Service / Start-Service / Stop-Service / Restart-Service -> equivalentes no PowerShell
-Gerenciador de Tarefas -> visão em tempo real de processos, desempenho e inicialização
-Stop-Process -> equivalente ao "Finalizar Tarefa" via terminal
+    Serviço -> programa em segundo plano (equivalente a daemon/unit do Linux)
+    services.msc -> gerencia serviços pela GUI; tipo de inicialização define se sobe sozinho no boot
+    Get-Service / Start-Service / Stop-Service / Restart-Service -> equivalentes no PowerShell
+    Gerenciador de Tarefas -> visão em tempo real de processos, desempenho e inicialização
+    Stop-Process -> equivalente ao "Finalizar Tarefa" via terminal
 ```

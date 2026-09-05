@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Variáveis, Tipos e Operadores em PowerShell
 
 > Parte 2 de 7 — Módulo 2 "PowerShell". Cobre declaração de variáveis, tipagem, e os operadores aritméticos, de comparação e lógicos.
@@ -120,14 +124,14 @@ $nome -like "Servidor*"                  # verdadeiro se $nome começar com "Ser
 
 ---
 
-## Resumo mental
+!!! resumno "Resumo Mental"
 
 ```
-Variável -> sempre começa com $, tipagem dinâmica (ou forçada com [tipo]$nome)
-Interpolação -> só funciona com aspas duplas ("$var"), não com aspas simples ('$var')
+    Variável -> sempre começa com $, tipagem dinâmica (ou forçada com [tipo]$nome)
+    Interpolação -> só funciona com aspas duplas ("$var"), não com aspas simples ('$var')
 
-Aritméticos -> + - * / %
-Comparação  -> -eq -ne -gt -lt -ge -le (não usa ==, >, <)
-Lógicos     -> -and -or -not
-Texto       -> -like (curinga), -match (regex), -contains (coleção)
+    Aritméticos -> + - * / %
+    Comparação  -> -eq -ne -gt -lt -ge -le (não usa ==, >, <)
+    Lógicos     -> -and -or -not
+    Texto       -> -like (curinga), -match (regex), -contains (coleção)
 ```

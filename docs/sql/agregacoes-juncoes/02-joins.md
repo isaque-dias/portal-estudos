@@ -1,5 +1,5 @@
 ---
-description: Diferença entre INNER JOIN e LEFT JOIN, com exemplos práticos e quando usar cada um.
+description: 
 ---
 
 # JOINs: INNER, LEFT, RIGHT, FULL, CROSS
@@ -142,12 +142,12 @@ INNER JOIN         LEFT JOIN           RIGHT JOIN          FULL JOIN
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-INNER JOIN -> só o que existe nos dois lados
-LEFT JOIN  -> tudo da tabela esquerda, com ou sem correspondência (NULL quando falta)
-RIGHT JOIN -> tudo da tabela direita (raramente usado, equivale a inverter e usar LEFT)
-FULL JOIN  -> tudo dos dois lados
-CROSS JOIN -> todas as combinações possíveis (produto cartesiano, sem condição)
+    INNER JOIN -> só o que existe nos dois lados
+    LEFT JOIN  -> tudo da tabela esquerda, com ou sem correspondência (NULL quando falta)
+    RIGHT JOIN -> tudo da tabela direita (raramente usado, equivale a inverter e usar LEFT)
+    FULL JOIN  -> tudo dos dois lados
+    CROSS JOIN -> todas as combinações possíveis (produto cartesiano, sem condição)
 ```

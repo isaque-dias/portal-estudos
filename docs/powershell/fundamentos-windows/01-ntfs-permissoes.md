@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Sistema de Arquivos e Permissões NTFS
 
 > Parte 1 de 5 — Módulo "Fundamentos de Windows para PowerShell". Cobre o conceito geral de sistema de arquivos, o sistema de arquivos NTFS e seu modelo de permissões.
@@ -97,12 +101,12 @@ Quando os dois níveis existem, **a permissão mais restritiva prevalece**. Por 
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Sistema de arquivos -> camada de software que organiza dados em um disco bruto (nomes, pastas, metadados, localização)
-NTFS -> uma implementação específica de sistema de arquivos, padrão do Windows; permissões via ACL (não rwx)
-Herança -> subpasta nova herda permissões da pasta pai, por padrão
-Deny sempre vence -> uma negação em qualquer grupo bloqueia o acesso, mesmo com Allow em outro grupo
-Compartilhamento + NTFS -> a permissão mais restritiva entre os dois níveis prevalece
+    Sistema de arquivos -> camada de software que organiza dados em um disco bruto (nomes, pastas, metadados, localização)
+    NTFS -> uma implementação específica de sistema de arquivos, padrão do Windows; permissões via ACL (não rwx)
+    Herança -> subpasta nova herda permissões da pasta pai, por padrão
+    Deny sempre vence -> uma negação em qualquer grupo bloqueia o acesso, mesmo com Allow em outro grupo
+    Compartilhamento + NTFS -> a permissão mais restritiva entre os dois níveis prevalece
 ```

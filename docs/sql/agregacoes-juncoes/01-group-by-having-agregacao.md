@@ -1,3 +1,7 @@
+---
+description: 
+---
+
 # GROUP BY, HAVING e Funções de Agregação
 
 > Parte 1 de 5 — Módulo 1.2 "Agregações e junções" (SQL). Cobre COUNT/SUM/AVG/MIN/MAX, agrupamento com GROUP BY e filtro de grupos com HAVING.
@@ -102,11 +106,11 @@ Ordem lógica de processamento dessa consulta: filtra clientes ativos (`WHERE`) 
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Agregação -> COUNT, SUM, AVG, MIN, MAX resumem várias linhas em um valor
-GROUP BY  -> separa linhas em grupos antes de agregar; toda coluna não agregada no SELECT precisa estar no GROUP BY
-HAVING    -> filtra GRUPOS, depois da agregação (WHERE filtra linhas, antes)
-Ordem lógica -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT
+    Agregação -> COUNT, SUM, AVG, MIN, MAX resumem várias linhas em um valor
+    GROUP BY  -> separa linhas em grupos antes de agregar; toda coluna não agregada no SELECT precisa estar no GROUP BY
+    HAVING    -> filtra GRUPOS, depois da agregação (WHERE filtra linhas, antes)
+    Ordem lógica -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT
 ```

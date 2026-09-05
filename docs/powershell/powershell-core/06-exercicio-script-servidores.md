@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Exercício: Script que Percorre um Array de Servidores e Imprime Status Simulado
 
 > Parte 6 de 7 — Módulo 2 "PowerShell". Exercício prático combinando array, loop, condicional e Hash Table.
@@ -39,10 +43,10 @@ Depois de fazer a versão básica funcionar, algumas formas de aprofundar a prá
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Exercício -> array de nomes de servidores + foreach + status simulado + if/switch reagindo ao status
-Ferramentas envolvidas -> array, foreach, Get-Random (opcional), if/elseif/else ou switch, Write-Host
-Evolução opcional -> array de Hash Tables, contagem por status, filtro com -like
+    Exercício -> array de nomes de servidores + foreach + status simulado + if/switch reagindo ao status
+    Ferramentas envolvidas -> array, foreach, Get-Random (opcional), if/elseif/else ou switch, Write-Host
+    Evolução opcional -> array de Hash Tables, contagem por status, filtro com -like
 ```

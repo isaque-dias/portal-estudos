@@ -142,3 +142,22 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--md-accent-fg-color);
 }
+
+/* docs/stylesheets/extra.css */
+:root {
+  --md-admonition-icon--resumo: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2z"/></svg>');
+}
+
+.md-typeset .admonition.resumo,
+.md-typeset details.resumo {
+  border-color: var(--md-accent-fg-color);
+}
+.md-typeset .resumo > .admonition-title {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+.md-typeset .resumo > .admonition-title::before {
+  background-color: var(--md-accent-fg-color);
+  -webkit-mask-image: var(--md-admonition-icon--resumo);
+  mask-image: var(--md-admonition-icon--resumo);
+}
+

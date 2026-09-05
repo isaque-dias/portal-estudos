@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Critério de Conclusão: Explicar a Diferença entre INNER e LEFT JOIN
 
 > Parte 5 de 5 — Módulo 1.2 "Agregações e junções" (SQL). Checkpoint prático para validar o domínio de agregação, JOINs e subqueries.
@@ -22,11 +26,12 @@ Se, ao tentar montar a explicação, for necessário parar para lembrar qual dos
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
+
 
 ```
-Critério -> explicar em voz alta, com exemplo próprio, a diferença entre INNER JOIN e LEFT JOIN
-Teste    -> descrever 2 tabelas com uma linha sem correspondência, e mostrar o que cada JOIN faz com ela
+    Critério -> explicar em voz alta, com exemplo próprio, a diferença entre INNER JOIN e LEFT JOIN
+    Teste    -> descrever 2 tabelas com uma linha sem correspondência, e mostrar o que cada JOIN faz com ela
 ```
 
 ## Próximos passos sugeridos de estudo

@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Cmdlets e a Convenção Verbo-Substantivo (Get-, Set-, New-)
 
 > Parte 5 de 7 — Módulo 2 "PowerShell". Cobre o que é um cmdlet, a convenção de nomenclatura Verbo-Substantivo, e os verbos mais comuns.
@@ -98,14 +102,14 @@ Get-Command ls                            # descobre para qual cmdlet um alias a
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Cmdlet -> comando nativo do PowerShell, sempre no formato Verbo-Substantivo
-Verbo  -> a ação (Get, Set, New, Remove, Start, Stop, Test...)
-Substantivo -> o recurso, sempre no singular (Process, Service, Item...)
+    Cmdlet -> comando nativo do PowerShell, sempre no formato Verbo-Substantivo
+    Verbo  -> a ação (Get, Set, New, Remove, Start, Stop, Test...)
+    Substantivo -> o recurso, sempre no singular (Process, Service, Item...)
 
-Get-Command -> lista/descobre cmdlets disponíveis
-Get-Help    -> mostra documentação e exemplos de um cmdlet
-Alias       -> atalho curto para um cmdlet (ls = Get-ChildItem); evitar em scripts, usar em uso interativo
+    Get-Command -> lista/descobre cmdlets disponíveis
+    Get-Help    -> mostra documentação e exemplos de um cmdlet
+    Alias       -> atalho curto para um cmdlet (ls = Get-ChildItem); evitar em scripts, usar em uso interativo
 ```

@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Subqueries Simples e Correlacionadas
 
 > Parte 3 de 5 — Módulo 1.2 "Agregações e junções" (SQL). Cobre subqueries no WHERE, IN, EXISTS, subqueries correlacionadas e subqueries no FROM.
@@ -76,12 +80,12 @@ Isso é equivalente, nesse caso específico, a usar `GROUP BY` com `HAVING` dire
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Subquery simples        -> calculada uma vez, independente da consulta externa
-Subquery correlacionada -> depende de uma coluna da consulta externa, reavaliada por linha
-EXISTS -> verifica se a subquery retorna alguma linha (comum em correlacionadas)
-IN     -> verifica se um valor está numa lista retornada pela subquery
-Subquery no FROM -> tratada como tabela temporária, útil para agregar e depois operar sobre o resultado
+    Subquery simples        -> calculada uma vez, independente da consulta externa
+    Subquery correlacionada -> depende de uma coluna da consulta externa, reavaliada por linha
+    EXISTS -> verifica se a subquery retorna alguma linha (comum em correlacionadas)
+    IN     -> verifica se um valor está numa lista retornada pela subquery
+    Subquery no FROM -> tratada como tabela temporária, útil para agregar e depois operar sobre o resultado
 ```

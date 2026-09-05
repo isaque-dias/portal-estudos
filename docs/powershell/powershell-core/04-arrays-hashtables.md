@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Arrays e Hash Tables em PowerShell
 
 > Parte 4 de 7 — Módulo 2 "PowerShell". Cobre criação e manipulação de arrays, e o uso de hash tables (pares chave-valor).
@@ -116,14 +120,14 @@ Essa estrutura — um array onde cada elemento é uma hash table com os atributo
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Array -> coleção ORDENADA, acessada por posição/índice (começa em 0)
-Hash Table -> coleção de pares CHAVE-VALOR, acessada por nome
+    Array -> coleção ORDENADA, acessada por posição/índice (começa em 0)
+    Hash Table -> coleção de pares CHAVE-VALOR, acessada por nome
 
-Array: $arr[0], $arr.Count, $arr += item, foreach, Where-Object
-Hash Table: $ht["chave"] ou $ht.chave, $ht.Keys, $ht.Remove("chave")
+    Array: $arr[0], $arr.Count, $arr += item, foreach, Where-Object
+    Hash Table: $ht["chave"] ou $ht.chave, $ht.Keys, $ht.Remove("chave")
 
-Array de Hash Tables -> lista de itens, cada um com múltiplos atributos nomeados (uso muito comum em scripts reais)
+    Array de Hash Tables -> lista de itens, cada um com múltiplos atributos nomeados (uso muito comum em scripts reais)
 ```

@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Operadores Lógicos e de Comparação (AND, OR, IN, BETWEEN, LIKE)
 
 > Parte 3 de 5 — Módulo 1.1 "Fundamentos absolutos" (SQL). Cobre operadores de comparação, combinação lógica de condições, e os operadores IN, BETWEEN, LIKE e NOT.
@@ -91,13 +95,13 @@ SELECT * FROM produtos WHERE preco NOT BETWEEN 50 AND 150;
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Comparação  -> =, <>/!=, >, <, >=, <=
-AND / OR    -> combina condições (todas / pelo menos uma) — use parênteses ao misturar os dois
-IN          -> compara com uma lista de valores
-BETWEEN     -> compara com um intervalo (incluindo os limites)
-LIKE        -> busca padrão de texto (% = qualquer sequência, _ = um caractere)
-NOT         -> inverte qualquer uma das condições acima
+    Comparação  -> =, <>/!=, >, <, >=, <=
+    AND / OR    -> combina condições (todas / pelo menos uma) — use parênteses ao misturar os dois
+    IN          -> compara com uma lista de valores
+    BETWEEN     -> compara com um intervalo (incluindo os limites)
+    LIKE        -> busca padrão de texto (% = qualquer sequência, _ = um caractere)
+    NOT         -> inverte qualquer uma das condições acima
 ```

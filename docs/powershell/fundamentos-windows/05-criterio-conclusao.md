@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Critério de Conclusão: Diagnosticando um Problema de Serviço/Permissão
 
 > Parte 5 de 5 — Módulo "Fundamentos de Windows para PowerShell". Checkpoint prático para validar o domínio dos tópicos anteriores (NTFS, serviços, usuários/grupos, rede).
@@ -47,13 +51,13 @@ Depois de praticar os dois cenários acima, o critério de conclusão do módulo
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Checkpoint -> diagnosticar serviço/permissão pela GUI E pelo terminal, sem consultar referência
-Cenário 1 -> serviço parado: services.msc / Get-Service + Start-Service
-Cenário 2 -> permissão de pasta: Propriedades > Segurança / icacls
-Autoavaliação -> explicar Manual vs Automático; distinguir NTFS vs compartilhamento; escolher GUI ou terminal conforme a situação
+    Checkpoint -> diagnosticar serviço/permissão pela GUI E pelo terminal, sem consultar referência
+    Cenário 1 -> serviço parado: services.msc / Get-Service + Start-Service
+    Cenário 2 -> permissão de pasta: Propriedades > Segurança / icacls
+    Autoavaliação -> explicar Manual vs Automático; distinguir NTFS vs compartilhamento; escolher GUI ou terminal conforme a situação
 ```
 
 ## Próximos passos sugeridos de estudo

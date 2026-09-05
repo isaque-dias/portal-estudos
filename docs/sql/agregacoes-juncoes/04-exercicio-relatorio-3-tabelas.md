@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Exercício: Relatório que Cruza 3 Tabelas com Agregação
 
 > Parte 4 de 5 — Módulo 1.2 "Agregações e junções" (SQL). Exercício prático combinando JOIN de múltiplas tabelas com agregação, em Chinook ou Northwind.
@@ -33,9 +37,10 @@ Isso envolve, no mínimo, três tabelas: `categories`, `products` e `order_detai
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
+
 
 ```
-Exercício -> relatório cruzando 3 tabelas + agregação, em Chinook ou Northwind
-Passos    -> identificar chaves -> JOIN de 2 tabelas -> validar -> JOIN da 3ª -> só então GROUP BY/agregação -> HAVING se precisar filtrar -> ORDER BY
+    Exercício -> relatório cruzando 3 tabelas + agregação, em Chinook ou Northwind
+    Passos    -> identificar chaves -> JOIN de 2 tabelas -> validar -> JOIN da 3ª -> só então GROUP BY/agregação -> HAVING se precisar filtrar -> ORDER BY
 ```

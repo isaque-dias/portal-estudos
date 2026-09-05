@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Condicionais (if/switch) e Loops (for/foreach/while) em PowerShell
 
 > Parte 3 de 7 — Módulo 2 "PowerShell". Cobre estruturas de decisão (if, switch) e estruturas de repetição (for, foreach, while).
@@ -134,17 +138,17 @@ foreach ($servidor in $servidores) {
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-if / elseif / else -> decisão simples, condição por condição
-switch              -> alternativa mais legível quando há muitas comparações para a mesma variável
+    if / elseif / else -> decisão simples, condição por condição
+    switch              -> alternativa mais legível quando há muitas comparações para a mesma variável
 
-for      -> repetição com contador explícito
-foreach  -> percorre cada item de uma coleção (o mais usado em scripts de administração)
-while    -> repete enquanto a condição for verdadeira
-do-while -> igual ao while, mas roda pelo menos uma vez sempre
+    for      -> repetição com contador explícito
+    foreach  -> percorre cada item de uma coleção (o mais usado em scripts de administração)
+    while    -> repete enquanto a condição for verdadeira
+    do-while -> igual ao while, mas roda pelo menos uma vez sempre
 
-break    -> sai do loop imediatamente
-continue -> pula para a próxima iteração
+    break    -> sai do loop imediatamente
+    continue -> pula para a próxima iteração
 ```

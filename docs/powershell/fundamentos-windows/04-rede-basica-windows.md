@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Rede Básica no Windows (ipconfig, Adaptadores, DNS)
 
 > Parte 4 de 5 — Módulo "Fundamentos de Windows para PowerShell". Cobre configuração de rede via ipconfig, adaptadores de rede e DNS.
@@ -72,13 +76,13 @@ tracert google.com        # mostra o caminho (saltos de rede) até o destino, ú
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-ipconfig -> mostra configuração de rede; /all traz detalhes completos
-/release e /renew -> forçam nova solicitação DHCP
-Adaptador de rede -> cada interface de conexão (física ou virtual)
-DNS -> traduz nomes em IP; nslookup consulta manualmente; ipconfig /flushdns limpa cache
-ping + tracert -> testam conectividade e o caminho até o destino
-ping por IP funciona mas por nome falha -> problema é DNS, não conectividade
+   ipconfig -> mostra configuração de rede; /all traz detalhes completos
+   /release e /renew -> forçam nova solicitação DHCP
+   Adaptador de rede -> cada interface de conexão (física ou virtual)
+   DNS -> traduz nomes em IP; nslookup consulta manualmente; ipconfig /flushdns limpa cache
+   ping + tracert -> testam conectividade e o caminho até o destino
+   ping por IP funciona mas por nome falha -> problema é DNS, não conectividade
 ```

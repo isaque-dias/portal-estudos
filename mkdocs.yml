@@ -23,6 +23,7 @@ nav:
       
   - PowerShell:
     - Visão geral: powershell/index.md
+    - Resumo rápido: powershell/resumo-rapido.md
     - Fundamentos de Windows:
       - NTFS e permissões: powershell/fundamentos-windows/01-ntfs-permissoes.md
       - "Serviços e Gerenciador de Tarefas": powershell/fundamentos-windows/02-servicos-gerenciador-tarefas.md

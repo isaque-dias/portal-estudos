@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # SELECT, WHERE, ORDER BY, LIMIT
 
 > Parte 2 de 5 — Módulo 1.1 "Fundamentos absolutos" (SQL). Cobre os comandos básicos de consulta: seleção de colunas, filtro de linhas, ordenação e limite de resultados.
@@ -65,14 +69,15 @@ Embora a ordem em que as cláusulas são **escritas** seja sempre `SELECT` → `
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
+
 
 ```
-SELECT   -> escolhe quais colunas retornar
-WHERE    -> filtra quais linhas entram no resultado
-ORDER BY -> define a ordem do resultado (ASC padrão, DESC decrescente)
-LIMIT    -> restringe a quantidade de linhas retornadas
+    SELECT   -> escolhe quais colunas retornar
+    WHERE    -> filtra quais linhas entram no resultado
+    ORDER BY -> define a ordem do resultado (ASC padrão, DESC decrescente)
+    LIMIT    -> restringe a quantidade de linhas retornadas
 
-Ordem escrita:  SELECT -> FROM -> WHERE -> ORDER BY -> LIMIT
-Ordem lógica:   FROM -> WHERE -> SELECT -> ORDER BY -> LIMIT
+    Ordem escrita:  SELECT -> FROM -> WHERE -> ORDER BY -> LIMIT
+    Ordem lógica:   FROM -> WHERE -> SELECT -> ORDER BY -> LIMIT
 ```

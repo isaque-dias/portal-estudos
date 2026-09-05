@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Exercício: 20 Consultas em um Banco de Exemplo
 
 > Parte 4 de 5 — Módulo 1.1 "Fundamentos absolutos" (SQL). Roteiro prático de 20 consultas para fixar SELECT, WHERE, ORDER BY, LIMIT e os operadores lógicos/de comparação.
@@ -39,9 +43,9 @@ Este é um roteiro de prática — as consultas devem ser **escritas e testadas 
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Exercício -> 20 consultas progressivas, sem respostas prontas, praticadas em Chinook ou Northwind
-Objetivo  -> fixar SELECT, WHERE, ORDER BY, LIMIT e os operadores (AND, OR, IN, BETWEEN, LIKE, NOT)
+    Exercício -> 20 consultas progressivas, sem respostas prontas, praticadas em Chinook ou Northwind
+    Objetivo  -> fixar SELECT, WHERE, ORDER BY, LIMIT e os operadores (AND, OR, IN, BETWEEN, LIKE, NOT)
 ```

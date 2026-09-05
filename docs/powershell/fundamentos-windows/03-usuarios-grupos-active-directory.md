@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Usuários Locais, Grupos e Conceito de Active Directory
 
 > Parte 3 de 5 — Módulo "Fundamentos de Windows para PowerShell". Cobre usuários e grupos locais, e o conceito de Active Directory como solução centralizada.
@@ -66,12 +70,12 @@ Conceitos-chave:
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Usuário local -> só existe na máquina onde foi criado
-Grupo -> coleção de usuários, para atribuir permissão em conjunto
-AD -> centraliza usuários/grupos/políticas para toda uma rede corporativa
-Domínio / DC / OU / GPO -> conceitos-chave do Active Directory
-Usuário local vs domínio -> escopo de reconhecimento e onde fica armazenado é a diferença central
+    Usuário local -> só existe na máquina onde foi criado
+    Grupo -> coleção de usuários, para atribuir permissão em conjunto
+    AD -> centraliza usuários/grupos/políticas para toda uma rede corporativa
+    Domínio / DC / OU / GPO -> conceitos-chave do Active Directory
+    Usuário local vs domínio -> escopo de reconhecimento e onde fica armazenado é a diferença central
 ```

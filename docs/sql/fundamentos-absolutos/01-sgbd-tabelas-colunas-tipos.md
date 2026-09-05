@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # O Que É um SGBD, Tabelas, Linhas, Colunas, Tipos de Dado
 
 > Parte 1 de 5 — Módulo 1.1 "Fundamentos absolutos" (SQL). Cobre o conceito de SGBD, o modelo relacional, e a estrutura básica de tabelas, linhas, colunas e tipos de dado.
@@ -56,12 +60,12 @@ Toda tabela bem estruturada tem uma coluna (ou combinação de colunas) que iden
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-SGBD -> software que armazena e organiza dados de forma estruturada (PostgreSQL, MySQL, Oracle...)
-Modelo relacional -> dados organizados em tabelas, que se relacionam por valores em comum
-Tabela -> conjunto de dados sobre uma entidade; colunas = atributos; linhas = registros individuais
-Tipo de dado -> define o que cada coluna pode armazenar (texto, número, data, lógico)
-Chave primária -> coluna que identifica cada linha de forma única
+    SGBD -> software que armazena e organiza dados de forma estruturada (PostgreSQL, MySQL, Oracle...)
+    Modelo relacional -> dados organizados em tabelas, que se relacionam por valores em comum
+    Tabela -> conjunto de dados sobre uma entidade; colunas = atributos; linhas = registros individuais
+    Tipo de dado -> define o que cada coluna pode armazenar (texto, número, data, lógico)
+    Chave primária -> coluna que identifica cada linha de forma única
 ```

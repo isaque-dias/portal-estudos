@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Critério de Conclusão: Consulta com Filtro Composto sem Consultar Referência
 
 > Parte 5 de 5 — Módulo 1.1 "Fundamentos absolutos" (SQL). Checkpoint prático para validar o domínio de SELECT, WHERE, ORDER BY, LIMIT e operadores lógicos/de comparação.
@@ -20,11 +24,11 @@ Caso contrário, é sinal de que vale revisar especificamente o(s) operador(es) 
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Critério -> escrever consulta com filtro composto (WHERE + AND/OR/IN/BETWEEN/LIKE) sem consultar referência
-Teste    -> consulta original, combinando 2+ operadores, sintaxe fluida sem checar documentação
+    Critério -> escrever consulta com filtro composto (WHERE + AND/OR/IN/BETWEEN/LIKE) sem consultar referência
+    Teste    -> consulta original, combinando 2+ operadores, sintaxe fluida sem checar documentação
 ```
 
 ## Próximos passos sugeridos de estudo

@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # Critério de Conclusão: Escrever um Script com Loop + Condicional sem Copiar de Exemplo
 
 > Parte 7 de 7 — Módulo 2 "PowerShell". Checkpoint prático para validar o domínio de variáveis, loops, condicionais, arrays/hash tables e cmdlets.
@@ -30,11 +34,11 @@ Se, ao tentar escrever esse script novo, for necessário voltar e conferir a sin
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-Critério -> escrever script com loop + condicional, do zero, sem copiar de exemplo
-Teste    -> cenário novo e diferente do exercício já feito; sintaxe fluida; saber justificar a escolha do loop
+    Critério -> escrever script com loop + condicional, do zero, sem copiar de exemplo
+    Teste    -> cenário novo e diferente do exercício já feito; sintaxe fluida; saber justificar a escolha do loop
 ```
 
 ## Próximos passos sugeridos de estudo

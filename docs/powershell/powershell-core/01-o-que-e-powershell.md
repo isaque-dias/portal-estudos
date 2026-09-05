@@ -1,3 +1,7 @@
+---
+description: ...
+---
+
 # O Que É o PowerShell e Como Ele Difere de um Terminal Comum (CMD/Bash)
 
 > Parte 1 de 7 — Módulo 2 "PowerShell". Cobre o que é o PowerShell, sua filosofia de objetos, e a diferença em relação ao CMD e ao Bash.
@@ -71,11 +75,11 @@ Vale reforçar que isso não é uma questão de qual shell é "superior" — sã
 
 ---
 
-## Resumo mental
+!!! resumo "Resumo Mental"
 
 ```
-PowerShell -> shell + linguagem de scripting da Microsoft, moderno e multiplataforma (Core/7+)
-Diferença central -> CMD/Bash trabalham com TEXTO; PowerShell trabalha com OBJETOS estruturados
-Vantagem prática -> filtrar/manipular dados via propriedades (Where-Object), sem recortar texto manualmente
-Não é "melhor" que Bash -> são filosofias diferentes, adequadas a ecossistemas diferentes (Unix vs Windows/.NET)
+    PowerShell -> shell + linguagem de scripting da Microsoft, moderno e multiplataforma (Core/7+)
+    Diferença central -> CMD/Bash trabalham com TEXTO; PowerShell trabalha com OBJETOS estruturados
+    Vantagem prática -> filtrar/manipular dados via propriedades (Where-Object), sem recortar texto manualmente
+    Não é "melhor" que Bash -> são filosofias diferentes, adequadas a ecossistemas diferentes (Unix vs Windows/.NET)
 ```
